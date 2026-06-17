@@ -1,0 +1,66 @@
+<svg width="760" height="340" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,'Segoe UI',sans-serif">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <rect width="760" height="340" rx="10" fill="#f1f3f4"/>
+  <rect width="760" height="30" rx="10" fill="#263238"/>
+  <rect y="20" width="760" height="10" fill="#263238"/>
+  <text x="380" y="19" text-anchor="middle" font-size="11" font-weight="700" fill="white">Capas de artefactos — Wiki-libro · ebook → vault</text>
+
+  <!-- Column headers -->
+  <rect x="14" y="44" width="730" height="20" rx="4" fill="#455a64"/>
+  <text x="100" y="57" text-anchor="middle" font-size="8" font-weight="700" fill="white">Capa</text>
+  <text x="280" y="57" text-anchor="middle" font-size="8" font-weight="700" fill="white">Ubicación</text>
+  <text x="450" y="57" text-anchor="middle" font-size="8" font-weight="700" fill="white">Propietario</text>
+  <text x="630" y="57" text-anchor="middle" font-size="8" font-weight="700" fill="white">Mutabilidad</text>
+
+  <!-- Row 1: Source binary -->
+  <rect x="14" y="68" width="730" height="42" rx="4" fill="#eceff1" stroke="#cfd8dc" stroke-width="1"/>
+  <text x="30" y="84" font-size="8" font-weight="700" fill="#37474f">Binario fuente</text>
+  <text x="30" y="97" font-size="7" fill="#546e7a">ebook PDF</text>
+  <text x="210" y="84" font-size="7.5" fill="#37474f">raw/&lt;book&gt;.pdf</text>
+  <text x="400" y="84" text-anchor="middle" font-size="7.5" fill="#37474f">—</text>
+  <text x="580" y="84" text-anchor="middle" font-size="7.5" fill="#c62828">🔒 inmutable · read-only</text>
+
+  <!-- Row 2: TOC manifest -->
+  <rect x="14" y="114" width="730" height="42" rx="4" fill="#ffffff" stroke="#cfd8dc" stroke-width="1"/>
+  <text x="30" y="130" font-size="8" font-weight="700" fill="#37474f">Manifiesto TOC</text>
+  <text x="30" y="143" font-size="7" fill="#546e7a">espina determinista</text>
+  <text x="210" y="130" font-size="7.5" fill="#37474f">raw-&lt;book&gt;/_toc.yaml</text>
+  <text x="400" y="130" text-anchor="middle" font-size="7.5" fill="#37474f">Fase 0</text>
+  <text x="580" y="130" text-anchor="middle" font-size="7.5" fill="#1565c0">versionado · immutable once set</text>
+
+  <!-- Row 3: Raw extracted -->
+  <rect x="14" y="160" width="730" height="42" rx="4" fill="#eceff1" stroke="#cfd8dc" stroke-width="1"/>
+  <text x="30" y="176" font-size="8" font-weight="700" fill="#37474f">Texto extraído</text>
+  <text x="30" y="189" font-size="7" fill="#546e7a">casi-literal · gitignored</text>
+  <text x="210" y="176" font-size="7.5" fill="#37474f">raw-&lt;book&gt;/ch&lt;NN&gt;-*.md</text>
+  <text x="400" y="176" text-anchor="middle" font-size="7.5" fill="#37474f">Fase 2</text>
+  <text x="580" y="176" text-anchor="middle" font-size="7.5" fill="#c62828">🔒 inmutable · no versionado (copyright)</text>
+
+  <!-- Row 4: Vault nodes -->
+  <rect x="14" y="206" width="730" height="42" rx="4" fill="#ffffff" stroke="#cfd8dc" stroke-width="1"/>
+  <text x="30" y="222" font-size="8" font-weight="700" fill="#37474f">Nodos del vault</text>
+  <text x="30" y="235" font-size="7" fill="#546e7a">síntesis propia · publicable</text>
+  <text x="210" y="222" font-size="7.5" fill="#37474f">&lt;vault&gt;/Part-N/…  index.md  log.md</text>
+  <text x="400" y="222" text-anchor="middle" font-size="7.5" fill="#37474f">Fase 3</text>
+  <text x="580" y="222" text-anchor="middle" font-size="7.5" fill="#2e7d32">✏ propiedad plena · versionado</text>
+
+  <!-- Row 5: Obsidian config -->
+  <rect x="14" y="252" width="730" height="42" rx="4" fill="#eceff1" stroke="#cfd8dc" stroke-width="1"/>
+  <text x="30" y="268" font-size="8" font-weight="700" fill="#37474f">Config Obsidian</text>
+  <text x="30" y="281" font-size="7" fill="#546e7a">vault builder + graph colors</text>
+  <text x="210" y="268" font-size="7.5" fill="#37474f">&lt;vault&gt;/.obsidian/ (5 JSON)</text>
+  <text x="400" y="268" text-anchor="middle" font-size="7.5" fill="#37474f">obsidian-vault-builder · obsidian-graph-colors</text>
+  <text x="580" y="268" text-anchor="middle" font-size="7.5" fill="#e65100">⚠ editable (Obsidian cerrado)</text>
+
+  <!-- column dividers -->
+  <line x1="185" y1="44" x2="185" y2="296" stroke="#b0bec5" stroke-width="1"/>
+  <line x1="375" y1="44" x2="375" y2="296" stroke="#b0bec5" stroke-width="1"/>
+  <line x1="530" y1="44" x2="530" y2="296" stroke="#b0bec5" stroke-width="1"/>
+
+  <text x="380" y="320" text-anchor="middle" font-size="7" font-style="italic" fill="#90a4ae">Acoplamiento por fichero: ninguna fase lee la salida en memoria de la anterior. Reanudable y auditable.</text>
+</svg>

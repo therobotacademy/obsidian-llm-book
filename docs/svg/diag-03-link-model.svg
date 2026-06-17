@@ -1,0 +1,108 @@
+<svg width="760" height="380" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,'Segoe UI',sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#78909c"/>
+    </marker>
+    <marker id="arrB" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#1565c0"/>
+    </marker>
+    <marker id="arrR" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#c62828"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <rect width="760" height="380" rx="10" fill="#f1f3f4"/>
+  <rect width="760" height="30" rx="10" fill="#263238"/>
+  <rect y="20" width="760" height="10" fill="#263238"/>
+  <text x="380" y="19" text-anchor="middle" font-size="11" font-weight="700" fill="white">Modelo de enlaces — Anillos sobre una espina (rings on a spine)</text>
+
+  <!-- SPINE (vertical) -->
+  <rect x="30" y="48" width="90" height="300" rx="8" fill="#e8eaf6" stroke="#3949ab" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="75" y="68" text-anchor="middle" font-size="8" font-weight="700" fill="#1a237e">ESPINA</text>
+  <!-- Root -->
+  <rect x="40" y="76" width="70" height="24" rx="5" fill="#3949ab"/>
+  <text x="75" y="91" text-anchor="middle" font-size="7.5" font-weight="700" fill="white">Root MOC</text>
+  <!-- Part MOC -->
+  <rect x="40" y="114" width="70" height="24" rx="5" fill="#5c6bc0"/>
+  <text x="75" y="129" text-anchor="middle" font-size="7.5" font-weight="700" fill="white">Part MOC</text>
+  <!-- Ch1 MOC -->
+  <rect x="40" y="152" width="70" height="24" rx="5" fill="#7986cb"/>
+  <text x="75" y="167" text-anchor="middle" font-size="7.5" font-weight="600" fill="white">Cap MOC 1</text>
+  <!-- Ch2 MOC -->
+  <rect x="40" y="236" width="70" height="24" rx="5" fill="#7986cb"/>
+  <text x="75" y="251" text-anchor="middle" font-size="7.5" font-weight="600" fill="white">Cap MOC 2</text>
+  <!-- spine arrows -->
+  <line x1="75" y1="100" x2="75" y2="112" stroke="#3949ab" stroke-width="1.5" marker-end="url(#arrB)"/>
+  <line x1="75" y1="138" x2="75" y2="150" stroke="#3949ab" stroke-width="1.5" marker-end="url(#arrB)"/>
+  <line x1="75" y1="176" x2="75" y2="234" stroke="#3949ab" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="75" y1="260" x2="75" y2="320" stroke="#3949ab" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="75" y="215" text-anchor="middle" font-size="7" fill="#7986cb">↓ cap N+1</text>
+
+  <!-- RING 1 (for Cap 1) -->
+  <text x="380" y="50" text-anchor="middle" font-size="9" font-weight="700" fill="#263238">Anillo del Capítulo 1</text>
+
+  <!-- Cap MOC node -->
+  <rect x="160" y="148" width="80" height="32" rx="7" fill="#7986cb" filter="url(#shadow)"/>
+  <text x="200" y="162" text-anchor="middle" font-size="8" font-weight="700" fill="white">Cap MOC</text>
+  <text x="200" y="174" text-anchor="middle" font-size="6.5" fill="#e8eaf6">solo enlaza → §1</text>
+
+  <!-- S1 (first, #first tag) -->
+  <rect x="290" y="108" width="74" height="30" rx="6" fill="#212121" filter="url(#shadow)"/>
+  <text x="327" y="122" text-anchor="middle" font-size="7.5" font-weight="700" fill="white">§1  #first</text>
+  <text x="327" y="133" text-anchor="middle" font-size="6" fill="#9e9e9e">entrada del anillo</text>
+
+  <!-- S2 -->
+  <rect x="420" y="108" width="74" height="30" rx="6" fill="#546e7a" filter="url(#shadow)"/>
+  <text x="457" y="128" text-anchor="middle" font-size="7.5" font-weight="600" fill="white">§2</text>
+
+  <!-- S3 -->
+  <rect x="550" y="108" width="74" height="30" rx="6" fill="#546e7a" filter="url(#shadow)"/>
+  <text x="587" y="128" text-anchor="middle" font-size="7.5" font-weight="600" fill="white">§3  (last)</text>
+
+  <!-- Cap MOC → S1 (entry) -->
+  <path d="M 240 154 Q 265 128 288 122" fill="none" stroke="#1565c0" stroke-width="2" marker-end="url(#arrB)"/>
+  <text x="258" y="130" font-size="6" fill="#1565c0">→ §1</text>
+
+  <!-- S1 → S2 -->
+  <line x1="364" y1="123" x2="418" y2="123" stroke="#78909c" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- S2 → S3 -->
+  <line x1="494" y1="123" x2="548" y2="123" stroke="#78909c" stroke-width="2" marker-end="url(#arr)"/>
+  <!-- S3 → Cap MOC (close ring) -->
+  <path d="M 587 138 Q 587 175 242 168" fill="none" stroke="#c62828" stroke-width="2" marker-end="url(#arrR)"/>
+  <text x="480" y="175" text-anchor="middle" font-size="6.5" fill="#c62828">← cierra el anillo</text>
+
+  <!-- S1 back link to Cap -->
+  <path d="M 290 115 Q 265 90 242 150" fill="none" stroke="#78909c" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arr)"/>
+  <text x="252" y="102" font-size="6" fill="#78909c">← Cap</text>
+
+  <!-- Plain-text Secciones note -->
+  <rect x="160" y="196" width="180" height="44" rx="6" fill="#fff8e1" stroke="#ffd54f" stroke-width="1.2"/>
+  <text x="250" y="212" text-anchor="middle" font-size="7" font-weight="700" fill="#e65100">## Secciones (texto plano)</text>
+  <text x="250" y="224" text-anchor="middle" font-size="6.5" fill="#5d4037">- §1 título plain text</text>
+  <text x="250" y="236" text-anchor="middle" font-size="6.5" fill="#5d4037">- §2 plain · sin wikilink</text>
+
+  <!-- See Also note -->
+  <rect x="420" y="196" width="204" height="36" rx="6" fill="#fce4ec" stroke="#e91e63" stroke-width="1.2"/>
+  <text x="522" y="212" text-anchor="middle" font-size="7" font-weight="700" fill="#880e4f">See Also = texto plano</text>
+  <text x="522" y="226" text-anchor="middle" font-size="6.5" fill="#ad1457">nunca wikilink cross-branch</text>
+
+  <!-- parent plain string note -->
+  <rect x="290" y="58" width="210" height="30" rx="6" fill="#e8f5e9" stroke="#43a047" stroke-width="1.2"/>
+  <text x="395" y="72" text-anchor="middle" font-size="7" font-weight="700" fill="#1b5e20">parent: C05-slug  (cadena plana)</text>
+  <text x="395" y="83" text-anchor="middle" font-size="6.5" fill="#388e3c">sin [[ ]] → metadato, no arista de grafo</text>
+
+  <!-- spine-to-ring connector -->
+  <line x1="110" y1="164" x2="158" y2="164" stroke="#3949ab" stroke-width="2" marker-end="url(#arrB)"/>
+
+  <!-- Ring 2 stub -->
+  <rect x="160" y="248" width="80" height="32" rx="7" fill="#7986cb" filter="url(#shadow)"/>
+  <text x="200" y="262" text-anchor="middle" font-size="8" font-weight="700" fill="white">Cap MOC 2</text>
+  <text x="200" y="274" text-anchor="middle" font-size="6.5" fill="#e8eaf6">anillo propio →</text>
+  <line x1="110" y1="248" x2="158" y2="260" stroke="#3949ab" stroke-width="2" marker-end="url(#arrB)"/>
+  <text x="330" y="265" font-size="7" fill="#90a4ae" font-style="italic">Cada capítulo tiene su propio anillo puro</text>
+
+  <text x="380" y="345" text-anchor="middle" font-size="7" font-style="italic" fill="#90a4ae">Resultado: el grafo muestra una cadena de anillos colgando de la espina — nunca una red densa. Navegable y legible.</text>
+</svg>

@@ -1,0 +1,15 @@
+# Extracted source text: near-verbatim chapter text from the ebook (copyright).
+# The structure manifest (_toc.yaml) IS versioned; the extracted chapter text is NOT.
+raw-*/*.md
+
+# The source ebook itself (large / copyrighted) — keep out of the repo by default.
+*.pdf
+
+# Python / tooling
+__pycache__/
+*.pyc
+.tmp/
+
+# OS / editor noise
+.DS_Store
+~$*

@@ -1,0 +1,117 @@
+<svg width="960" height="360" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,'Segoe UI',sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#78909c"/>
+    </marker>
+    <marker id="arrA" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#f9a825"/>
+    </marker>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#00000018"/>
+    </filter>
+  </defs>
+
+  <rect width="960" height="360" rx="10" fill="#f1f3f4"/>
+  <rect width="960" height="30" rx="10" fill="#263238"/>
+  <rect y="20" width="960" height="10" fill="#263238"/>
+  <text x="480" y="19" text-anchor="middle" font-size="11" font-weight="700" fill="white">Pipeline — Wiki-libro · ebook → vault árbol del índice</text>
+
+  <!-- SOURCE -->
+  <rect x="14" y="70" width="108" height="120" rx="8" fill="#eceff1" stroke="#90a4ae" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="14" y="70" width="108" height="22" rx="8" fill="#546e7a"/>
+  <rect x="14" y="82" width="108" height="10" fill="#546e7a"/>
+  <text x="68" y="85" text-anchor="middle" font-size="8" font-weight="700" fill="white">FUENTE 🔒</text>
+  <text x="68" y="108" text-anchor="middle" font-size="7" fill="#455a64">ebook PDF</text>
+  <text x="68" y="120" text-anchor="middle" font-size="7" fill="#455a64">(dominio completo)</text>
+  <text x="68" y="140" text-anchor="middle" font-size="6.5" fill="#90a4ae">read-only</text>
+  <text x="68" y="156" text-anchor="middle" font-size="6.5" fill="#90a4ae">raw-&lt;book&gt;/</text>
+
+  <!-- Phase 0: Map -->
+  <rect x="136" y="55" width="138" height="148" rx="9" fill="#ffffff" stroke="#b0bec5" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="136" y="55" width="138" height="22" rx="9" fill="#37474f"/>
+  <rect x="136" y="67" width="138" height="10" fill="#37474f"/>
+  <text x="205" y="70" text-anchor="middle" font-size="8.5" font-weight="700" fill="white">0 · Map (asistido)</text>
+  <rect x="148" y="89" width="114" height="40" rx="6" fill="#f9a825"/>
+  <text x="205" y="107" text-anchor="middle" font-size="7.5" font-weight="600" fill="#3e2723">Parsear TOC</text>
+  <text x="205" y="120" text-anchor="middle" font-size="6.5" fill="#5d4037">_toc.yaml</text>
+  <rect x="148" y="136" width="114" height="34" rx="6" fill="#fff8e1" stroke="#ffd54f" stroke-width="1.2"/>
+  <text x="205" y="150" text-anchor="middle" font-size="7" font-weight="600" fill="#6d4c41">Calibrar offset</text>
+  <text x="205" y="162" text-anchor="middle" font-size="6.5" fill="#9e8a3a">pdf_idx = page + N</text>
+
+  <!-- Phase 1: Bootstrap -->
+  <rect x="288" y="55" width="138" height="148" rx="9" fill="#ffffff" stroke="#b0bec5" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="288" y="55" width="138" height="22" rx="9" fill="#37474f"/>
+  <rect x="288" y="67" width="138" height="10" fill="#37474f"/>
+  <text x="357" y="70" text-anchor="middle" font-size="8.5" font-weight="700" fill="white">1 · Bootstrap (1 vez)</text>
+  <rect x="300" y="89" width="114" height="78" rx="6" fill="#f9a825"/>
+  <text x="357" y="115" text-anchor="middle" font-size="8" font-weight="700" fill="#3e2723">obsidian-</text>
+  <text x="357" y="128" text-anchor="middle" font-size="8" font-weight="700" fill="#3e2723">vault-builder</text>
+  <text x="357" y="145" text-anchor="middle" font-size="6.5" fill="#5d4037">vault/ + .obsidian/</text>
+  <text x="357" y="156" text-anchor="middle" font-size="6.5" fill="#5d4037">5 JSON (cerrado)</text>
+
+  <!-- Phase 2: Raw -->
+  <rect x="440" y="55" width="138" height="148" rx="9" fill="#ffffff" stroke="#b0bec5" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="440" y="55" width="138" height="22" rx="9" fill="#37474f"/>
+  <rect x="440" y="67" width="138" height="10" fill="#37474f"/>
+  <text x="509" y="70" text-anchor="middle" font-size="8.5" font-weight="700" fill="white">2 · Raw  ↻ por cap.</text>
+  <rect x="452" y="89" width="114" height="78" rx="6" fill="#f9a825"/>
+  <text x="509" y="115" text-anchor="middle" font-size="8" font-weight="700" fill="#3e2723">extract_pages.py</text>
+  <text x="509" y="132" text-anchor="middle" font-size="6.5" fill="#5d4037">rango pp. libro</text>
+  <text x="509" y="144" text-anchor="middle" font-size="6.5" fill="#5d4037">→ ch&lt;NN&gt;.md 🔒</text>
+  <text x="509" y="156" text-anchor="middle" font-size="6.5" fill="#5d4037">gitignored</text>
+
+  <!-- Phase 3: Compile -->
+  <rect x="592" y="55" width="138" height="148" rx="9" fill="#ffffff" stroke="#b0bec5" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="592" y="55" width="138" height="22" rx="9" fill="#37474f"/>
+  <rect x="592" y="67" width="138" height="10" fill="#37474f"/>
+  <text x="661" y="70" text-anchor="middle" font-size="8.5" font-weight="700" fill="white">3 · Compile  ↻</text>
+  <rect x="604" y="89" width="114" height="40" rx="6" fill="#f9a825"/>
+  <text x="661" y="107" text-anchor="middle" font-size="7.5" font-weight="600" fill="#3e2723">LLM synth nodes</text>
+  <text x="661" y="120" text-anchor="middle" font-size="6.5" fill="#5d4037">MOC + secciones</text>
+  <rect x="604" y="136" width="114" height="34" rx="6" fill="#f9a825"/>
+  <text x="661" y="150" text-anchor="middle" font-size="7.5" font-weight="600" fill="#3e2723">finalize_part.py</text>
+  <text x="661" y="163" text-anchor="middle" font-size="6.5" fill="#5d4037">anillos + plain parent</text>
+
+  <!-- Phase 4: Color+index -->
+  <rect x="744" y="55" width="138" height="148" rx="9" fill="#ffffff" stroke="#b0bec5" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="744" y="55" width="138" height="22" rx="9" fill="#37474f"/>
+  <rect x="744" y="67" width="138" height="10" fill="#37474f"/>
+  <text x="813" y="70" text-anchor="middle" font-size="8.5" font-weight="700" fill="white">4 · Color + índice</text>
+  <rect x="756" y="89" width="114" height="40" rx="6" fill="#f9a825"/>
+  <text x="813" y="107" text-anchor="middle" font-size="8" font-weight="700" fill="#3e2723">graph-colors</text>
+  <text x="813" y="120" text-anchor="middle" font-size="6.5" fill="#5d4037">colorGroups por Parte</text>
+  <rect x="756" y="136" width="114" height="34" rx="6" fill="#f9a825"/>
+  <text x="813" y="150" text-anchor="middle" font-size="7.5" font-weight="600" fill="#3e2723">gen_index.py</text>
+  <text x="813" y="163" text-anchor="middle" font-size="6.5" fill="#5d4037">index.md plano</text>
+
+  <!-- Output -->
+  <rect x="896" y="55" width="52" height="148" rx="9" fill="#e8f5e9" stroke="#43a047" stroke-width="1.6" filter="url(#shadow)"/>
+  <text x="922" y="118" text-anchor="middle" font-size="16">📚</text>
+  <text x="922" y="138" text-anchor="middle" font-size="6.5" font-weight="700" fill="#1b5e20">vault/</text>
+  <text x="922" y="150" text-anchor="middle" font-size="6" fill="#388e3c">~230</text>
+  <text x="922" y="162" text-anchor="middle" font-size="6" fill="#388e3c">nodos</text>
+
+  <!-- arrows -->
+  <line x1="122" y1="130" x2="134" y2="130" stroke="#78909c" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="274" y1="130" x2="286" y2="130" stroke="#78909c" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="426" y1="130" x2="438" y2="130" stroke="#78909c" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="578" y1="130" x2="590" y2="130" stroke="#78909c" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="730" y1="130" x2="742" y2="130" stroke="#78909c" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="882" y1="130" x2="894" y2="130" stroke="#78909c" stroke-width="2" marker-end="url(#arr)"/>
+
+  <!-- Human gate -->
+  <rect x="136" y="230" width="812" height="44" rx="9" fill="#fff8e1" stroke="#ffb300" stroke-width="1.8"/>
+  <text x="156" y="248" font-size="9" font-weight="700" fill="#e65100">👤 Puerta humana (difusa) · Query</text>
+  <text x="156" y="264" font-size="7.5" fill="#5d4037">El humano lee el vault y pregunta; sus lagunas guían qué Parte / capítulo ingestar a continuación. No hay firma puntual: la puerta es continua.</text>
+  <line x1="922" y1="203" x2="922" y2="228" stroke="#ffb300" stroke-width="2" marker-end="url(#arrA)"/>
+
+  <!-- note -->
+  <text x="480" y="300" text-anchor="middle" font-size="7" font-style="italic" fill="#90a4ae">Forma: bootstrap (1 vez) → bucle de ingesta por capítulo → mantenimiento. Fases 2–4 se repiten por cada Parte del libro.</text>
+
+  <!-- artifact labels -->
+  <text x="205" y="45" text-anchor="middle" font-size="6.5" fill="#90a4ae">_toc.yaml</text>
+  <text x="357" y="45" text-anchor="middle" font-size="6.5" fill="#90a4ae">vault/.obsidian/</text>
+  <text x="509" y="45" text-anchor="middle" font-size="6.5" fill="#90a4ae">raw-&lt;book&gt;/ch*.md</text>
+  <text x="661" y="45" text-anchor="middle" font-size="6.5" fill="#90a4ae">Part-N/*.md</text>
+  <text x="813" y="45" text-anchor="middle" font-size="6.5" fill="#90a4ae">graph.json · index.md</text>
+</svg>
