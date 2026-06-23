@@ -34,7 +34,7 @@ def main():
     ap.add_argument("--dir", required=True)
     ap.add_argument("--roman", required=True)
     ap.add_argument("--lang", choices=["es", "en"], default="en",
-                    help="language of generated navigation labels (default: en, preserves the BDA3 case)")
+                    help="language of generated navigation labels (default: en; pass --lang es for the original BDA3/Spanish labels)")
     a = ap.parse_args()
 
     # Navigation micro-labels are the only generated prose; everything else is the LLM's synthesis.
