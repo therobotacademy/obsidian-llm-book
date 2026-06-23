@@ -33,7 +33,19 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dir", required=True)
     ap.add_argument("--roman", required=True)
+    ap.add_argument("--lang", choices=["es", "en"], default="es",
+                    help="language of generated navigation labels (default: es, preserves the BDA3 case)")
     a = ap.parse_args()
+
+    # Navigation micro-labels are the only generated prose; everything else is the LLM's synthesis.
+    L = {
+        "es": {"sec": "## Secciones · anillo", "cap": "Cap.", "parte": "Parte",
+               "intro": "Entra por **{entry}** y recorre el anillo con los pies de navegación; "
+                        "la última sección cierra de vuelta a este capítulo."},
+        "en": {"sec": "## Sections · ring", "cap": "Ch.", "parte": "Part",
+               "intro": "Enter at **{entry}** and walk the ring via the navigation footers; "
+                        "the last section closes back to this chapter."},
+    }[a.lang]
 
     sec_files = glob.glob(os.path.join(a.dir, "S*.md"))
     moc_files = glob.glob(os.path.join(a.dir, "C*.md"))
@@ -89,7 +101,7 @@ def main():
     sec_done = 0
     for ch, order in bych.items():
         cap = moc_of[ch]
-        cap_a = f"[[{cap}|Cap. {ch}]]"
+        cap_a = f"[[{cap}|{L['cap']} {ch}]]"
         n = len(order)
         for i, s in enumerate(order):
             raw = open(info[s]["f"], encoding="utf-8").read()
@@ -121,10 +133,9 @@ def main():
         out, i = [], 0
         while i < len(lines):
             ln = lines[i]
-            if re.match(r"^##\s+Secciones", ln):
-                out += ["## Secciones · anillo", "",
-                        f"Entra por **[[{first}|§{info[first]['toc']}]]** y recorre el anillo con los pies de "
-                        f"navegación; la última sección cierra de vuelta a este capítulo.", ""]
+            if re.match(r"^##\s+(Secciones|Sections)\b", ln):
+                entry = f"[[{first}|§{info[first]['toc']}]]"
+                out += [L["sec"], "", L["intro"].format(entry=entry), ""]
                 out += [f"- {title[s]}" for s in order]
                 i += 1
                 while i < len(lines) and not re.match(r"^##\s+", lines[i]):
@@ -137,10 +148,10 @@ def main():
 
         parts = []
         if idx > 0:
-            parts.append(f"← [[{moc_of[chapters[idx-1]]}|Cap. {chapters[idx-1]}]]")
-        parts.append(f"↑ [[{part_stem}|Parte {a.roman}]]")
+            parts.append(f"← [[{moc_of[chapters[idx-1]]}|{L['cap']} {chapters[idx-1]}]]")
+        parts.append(f"↑ [[{part_stem}|{L['parte']} {a.roman}]]")
         if idx < len(chapters) - 1:
-            parts.append(f"[[{moc_of[chapters[idx+1]]}|Cap. {chapters[idx+1]}]] →")
+            parts.append(f"[[{moc_of[chapters[idx+1]]}|{L['cap']} {chapters[idx+1]}]] →")
         raw = set_footer(raw, " · ".join(parts))
         open(f, "w", encoding="utf-8").write(raw)
         moc_done += 1

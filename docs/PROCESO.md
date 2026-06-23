@@ -80,7 +80,10 @@ offset**: las páginas del TOC son *páginas de libro*, no índices del PDF; se 
 una cabecera de capítulo conocida y se fija `pdf_idx = book_page + offset`, **verificándolo en ≥3
 capítulos** repartidos por el libro (puede haber láminas insertadas). *Asistido-manual* (los TOC varían
 demasiado para un parser frágil). **Caso BDA3:** offset = 9, constante en las 677 páginas; 5 partes/23
-caps/192 secciones/3 apéndices.
+caps/192 secciones/3 apéndices. **Offset por capítulo:** si el PDF ha eliminado páginas en blanco (copias
+optimizadas/z-lib), el offset **no es constante** — decrece en los saltos de capítulo. En ese caso se registra
+un **offset por capítulo** en `_toc.yaml` (caso IDS: 12→5 a lo largo de 13 caps); como la extracción es por
+capítulo, el offset variable queda neutralizado.
 
 ### Fase 1 — Bootstrap (una vez) · delega en `obsidian-vault-builder`
 Crea `<vault>/` + `.obsidian/` con Obsidian **cerrado**. Perfil *tree*: plugins `graph`, `backlink`,
@@ -150,6 +153,17 @@ mantenimiento**, no una tubería de una pasada. La **puerta humana** es doble:
    profesor tras revisar el piloto — y quedó baked en el skill para que las Partes siguientes nazcan
    solo-árbol, sin pasada de re-estructura.
 
+> **Autonomía — decidir por defecto.** El proceso es **agéntico**: el agente resuelve las variables abiertas
+> con reglas por defecto documentadas en `CLAUDE.md` (id del vault, idioma, agrupación en Partes, plegado de
+> end-matter, ubicación del PDF, offset por capítulo) y **solo se detiene en la puerta humana** —tras
+> Fase 0 + bootstrap + el **primer capítulo** compilado (índice + colores, grafo visualizable)—. Escala al
+> humano únicamente si una regla no resuelve (TOC ilegible, calibración no verificable).
+
+> **Asignación de modelos por fase.** La orquestación corre en **Opus**; delega cada fase a un subagente con
+> `model:` explícito. **Opus**: Fase 0 + piloto de síntesis + lint (juicio y creación). **Sonnet**: fan-out de
+> capítulos 2…n que replican el patrón del piloto. **Haiku/scripts**: bootstrap, extracción y coloreado
+> (deterministas). Regla: *juicio y creación en Opus, replicación en Sonnet, mecánica en scripts/Haiku.*
+
 ---
 
 ## 6. Referencia rápida — triggers
@@ -176,6 +190,10 @@ mantenimiento**, no una tubería de una pasada. La **puerta humana** es doble:
 | Offset PDF↔libro | Calibrar + verificar en Fase 0 | Las páginas del TOC ≠ índices del PDF |
 | `index.md` recortado | Enlaza solo a Capítulo-MOC | Evita una estrella de 56 radios que compita con el árbol |
 | Conductor = skill | `karpathy-llm-wiki-book` orquesta | Las fases de extracción/compilación se repiten por Parte de forma fiable |
+| **Asignación de modelos por fase** | Opus en Fase 0 + piloto + lint; subagentes **Sonnet** para el fan-out de capítulos; scripts/**Haiku** en Fases 1/2/4 | Juicio y creación en el modelo fuerte; replicación barata en Sonnet; la mecánica determinista no necesita modelo |
+| **Autonomía — decidir por defecto** | Reglas por defecto en `CLAUDE.md` (id, idioma, Partes, end-matter, PDF, offset); preguntar **solo en la puerta** | Comportamiento agéntico: no interrumpir por decisiones resolubles por regla |
+| **Offset por capítulo** | Si el PDF elimina páginas en blanco, el offset no es constante → registrar offset por capítulo en `_toc.yaml` | Las copias optimizadas rompen un offset global; extraer por capítulo lo neutraliza |
+| **No bifurcar tooling compartido** | Parametrizar el motor (p.ej. flag `--lang`) en vez de forkear por libro | Un fork por libro fragmenta el motor determinista |
 | Diagramas SVG | **Generados** (`svg/diag-01` pipeline · `svg/diag-02` artefactos · `svg/diag-03` link-model) | Creados en sesión 2026-06-17; copiados al REPO standalone |
 
 ---

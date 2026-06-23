@@ -13,3 +13,8 @@ __pycache__/
 # OS / editor noise
 .DS_Store
 ~$*
+
+# Product is data, not source code — keep out of the repo by default
+raw*/
+wiki*/
+sessions/
